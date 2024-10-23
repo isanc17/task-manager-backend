@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { connectToDatabase } from '../db/database';
 import { sendResponse } from '../utils/response';
+import { getUsr, getUsrAct } from '../utils/const';
 
 
 export const getUsuariosAct = async (_req: Request, res: Response): Promise<void> => {
   try {
     const db = await connectToDatabase();
 
-    const usuarios = await db.all(`SELECT usuario_id, nombre, usuario, estado FROM usuario WHERE estado = 1`);
+    const usuarios = await db.all(getUsrAct);
     
     await db.close();
 
@@ -22,7 +23,7 @@ export const getUsuarios = async (_req: Request, res: Response): Promise<void> =
     try {
       const db = await connectToDatabase();
   
-      const usuarios = await db.all(`SELECT usuario_id, nombre, usuario, estado FROM usuario`);
+      const usuarios = await db.all(getUsr);
       
       await db.close();
   
