@@ -5,8 +5,8 @@ import { handleValidationErrors } from '../middleware/validationHandler';
 
 const router = Router();
 
-router.post('/', tareaCreateValidator, handleValidationErrors, createTarea);
-router.put('/:id', tareaUpdateValidator, handleValidationErrors, updateTarea);
+router.post('/', tareaCreateValidator, handleValidationErrors(), createTarea);
+router.put('/:id', tareaUpdateValidator, handleValidationErrors(), updateTarea);
 router.get('/', getTareas);
 router.delete('/:id', deleteTarea);
 
