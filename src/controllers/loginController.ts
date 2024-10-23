@@ -3,7 +3,7 @@ import { sendResponse } from '../utils/response';
 import { connectToDatabase } from '../db/database';
 
 export const login = async (req: Request, res: Response) => {
-  const { usuario, contrasena } = req.body;
+  const { usuario, contrasena } = req.query;
 
   try {
     const db = await connectToDatabase();
@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response) => {
     const user = await db.get(
       `SELECT * 
        FROM usuario 
-       WHERE TRIM(usuario) = TRIM(?) AND TRIM(contrasena) = TRIM(?)`,
+       WHERE usuario = ? AND contrasena = ?`,
       [usuario, contrasena]
     );
 
@@ -22,8 +22,7 @@ export const login = async (req: Request, res: Response) => {
       return sendResponse(res, 401, 'error', 'Credenciales inválidas.');
     }
 
-    // Generar token concatenando nombre y usuario
-    const token = `${user.nombre}:${user.usuario}`;
+    const token = `${user.nombre.trim()}:${user.usuario}`;
 
     sendResponse(res, 200, 'success', 'Inicio de sesión exitoso.', { token });
   } catch (error) {
