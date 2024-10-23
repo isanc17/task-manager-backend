@@ -3,6 +3,7 @@ import { connectToDatabase } from "../db/database";
 import { sendResponse } from "../utils/response";
 import { Tarea } from "../models/models";
 import { validationResult } from "express-validator";
+import { delTarea, insTarea, updTarea } from "../utils/const";
 
 export const createTarea = async (
   req: Request,
@@ -20,9 +21,8 @@ export const createTarea = async (
 
   try {
     const db = await connectToDatabase();
-    const result = await db.run(
-      `INSERT INTO tareas (usuario_asignado_id, usuario_creador_id, estado, titulo, descripcion, fecha_vencimiento) 
-       VALUES (?, ?, ?, ?, ?, ?)`,
+    const result = await db.run(insTarea
+      ,
       [
         usuario_asignado_id,
         usuario_creador_id,
@@ -86,11 +86,7 @@ export const updateTarea = async (
   try {
     const db = await connectToDatabase();
 
-    const stmt = await db.prepare(`
-        UPDATE tareas 
-        SET usuario_asignado_id = ?, estado = ?, titulo = ?, descripcion = ?, fecha_vencimiento = ? 
-        WHERE tarea_id = ?
-      `);
+    const stmt = await db.prepare(updTarea);
 
     const result = await stmt.run([
       usuario_asignado_id,
@@ -121,7 +117,7 @@ export const deleteTarea = async (
 ): Promise<void> => {
   try {
     const db = await connectToDatabase();
-    const stmt = await db.prepare(`DELETE FROM tareas WHERE tarea_id = ?`);
+    const stmt = await db.prepare(delTarea);
     const result = await stmt.run([req.params.id]);
     await stmt.finalize();
     await db.close();
