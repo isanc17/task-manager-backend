@@ -40,5 +40,5 @@ export async function seed() {
 }
 
 seed().catch((error) => {
-  console.error('Error en el seeding:', error);
+  console.error('Seeding no encuentra la bd');
 });
