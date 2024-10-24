@@ -7,7 +7,9 @@ import { autenticarToken } from "./middleware/loginMiddleware";
 
 const app: Application = express();
 const PORT = 3000;
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(loginRoutes);
 app.use(autenticarToken);
