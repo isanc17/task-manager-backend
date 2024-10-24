@@ -88,6 +88,12 @@ Puedes encontrar la colección de Postman para este proyecto en el archivo:
 3. Selecciona el archivo `postman-collection.json`.
 4. Ahora puedes probar las rutas del API.
 
+## Diagrama de Entidad-Relación
+
+Puedes encontrar el Diagrama de Entidad Relación en el archivo:
+
+`/docs/postman-collection.json`
+
 # Licencia
 Este proyecto está bajo la licencia MIT.
 
