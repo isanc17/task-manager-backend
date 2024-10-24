@@ -11,7 +11,7 @@ describe('Login Controller', () => {
   it('debería devolver un token si las credenciales son correctas', async () => {
     const response = await request(app)
       .get('/login')
-      .send({
+      .query({
         usuario: 'admin',
         contrasena: 'admin',
       });
@@ -24,7 +24,7 @@ describe('Login Controller', () => {
   it('debería devolver un error si las credenciales son incorrectas', async () => {
     const response = await request(app)
       .get('/login')
-      .send({
+      .query({
         usuario: 'admin',
         contrasena: '12345',
       });
@@ -35,7 +35,7 @@ describe('Login Controller', () => {
   });
 
   it('debería devolver un error si falta el campo usuario o contraseña', async () => {
-    const response = await request(app).get('/login').send({
+    const response = await request(app).get('/login').query({
       usuario: 'admin',
     });
 
