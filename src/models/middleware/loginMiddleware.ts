@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { sendResponse } from '../utils/response';
+import { sendResponse } from '../../utils/response';
 
 export const autenticarToken = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
