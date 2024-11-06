@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import usuarioRoutes from "./routes/usuarioRoutes";
 import tareasRouter from "./routes/tareasRoutes";
 import loginRoutes from "./routes/loginRoutes";
-import { autenticarToken } from "./middleware/loginMiddleware";
+import { autenticarToken } from "./models/middleware/loginMiddleware";
 
 const app: Application = express();
 const PORT = 3000;

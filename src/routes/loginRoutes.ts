@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { login } from "../controllers/loginController";
-import { handleValidationErrors } from "../middleware/validationHandler";
-import { loginValidator } from "../middleware/loginValidator";
+import { handleValidationErrors } from "../models/middleware/validationHandler";
+import { loginValidator } from "../models/middleware/loginValidator";
 
 const router = Router();
 

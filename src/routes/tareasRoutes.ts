@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { createTarea, updateTarea, getTareas, deleteTarea } from '../controllers/tareaController';
-import { tareaCreateValidator, tareaUpdateValidator } from '../middleware/tareaValidator';
-import { handleValidationErrors } from '../middleware/validationHandler';
+import { tareaCreateValidator, tareaUpdateValidator } from '../models/middleware/tareaValidator';
+import { handleValidationErrors } from '../models/middleware/validationHandler';
 
 const router = Router();
 
