@@ -7,8 +7,8 @@
     "test": "jest",
     "dev": "npx ts-node src/app.ts",
     "build": "tsc",
-    "init-db": "npx ts-node src/db/initDb.ts",
-    "start": "npm run init-db && npx ts-node src/app.ts"
+    "init-db": "npx ts-node src/db/initdb.ts",
+    "start": "npx ts-node src/app.ts"
   },
   "keywords": [],
   "author": "",
